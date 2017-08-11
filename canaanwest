@@ -1,0 +1,126 @@
+drivers =
+#the largest data structure will be an array with a hash for each driver.
+#Driver ID to be like the "title" of each hash
+#Have an array of riders.
+#Each rider gets a hash within the array of riders
+#In the hash, we have rider ID and stats for the rider [cost, rating, date]
+
+[
+  #driver 1
+  {
+    driver_id: "DR0001",
+    riders:
+    [
+      { #rider 1
+        rider_id: "RD0003",
+        date: "3 Feb 2016",
+        rating: 3,
+        cost: 10,
+      },
+
+      { # rider 2
+        rider_id: "RD0003",
+        date: "5 Feb 2016",
+        rating: 2,
+        cost: 45,
+      },
+      { #rider 3
+        rider_id: "RD0015",
+        date: "3 Feb 2016",
+        rating: 4,
+        cost: 30,
+      }
+    ] #closes rides
+  }, #closes driver 1
+
+
+
+  #NEW DRIVER 2
+  {
+    driver_id: "DR0002",
+    riders:
+    [
+      {#rider 1
+        rider_id: "RD0073",
+        date: "3 Feb 2016",
+        rating: 5,
+        cost: 25
+      },
+
+      {#rider2
+        rider_id: "RD0013",
+        date: "4 Feb 2016",
+        rating: 1,
+        cost: 15
+      },
+
+      { #rider3
+        rider_id: "RD0066",
+        date: "5 Feb 2016",
+        rating: 3,
+        cost: 35
+      }
+    ]
+  },
+
+  #NEW DRIVER 3
+  {
+    driver_id: "DR0003",
+    riders:
+    [
+      {
+        rider_id: "RD0066",
+        date: "4 Feb 2016",
+        rating: 5,
+        cost: 5
+      },
+      {
+        rider_id: "RD0003",
+        date: "5 Feb 2016",
+        rating: 2,
+        cost: 50
+      },
+    ]
+  },
+
+  #driver number 4
+  {
+    driver_id: "DR0004",
+    riders:
+    [
+      { #rider 1
+        rider_id: "RD0022",
+        date: "3 Feb 2016",
+        rating: 5,
+        cost: 5
+      },
+      { #rider 2
+        rider_id: "RD0022",
+        date: "4 Feb 2016",
+        rating: 4,
+        cost: 10
+      },
+
+      { #rider 3
+        rider_id: "RD0073",
+        date: "5 Feb 2016",
+        rating: 5,
+        cost: 20
+      }
+    ]
+  }
+]
+
+drivers.each do |driver_hash|
+  puts "Driver #{driver_hash[:driver_id]}'s earnings are:"
+    $earnings = 0
+  driver_hash[:riders].each do |rider|
+      $earnings += rider[:cost]
+    end
+    puts "#{$earnings}"
+end
+
+
+#We could also use this data structure to access any number of things--we could find an average score for each driver,
+#determine how many times a particular rider has ridden,, or see what dates a driver is most active, to 
+#name a few.
